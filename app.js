@@ -116,7 +116,11 @@ searchButton.addEventListener("click", async () => {
       `;
 
   //   Productos
-  orderProducts.innerHTML = toTitleCase(orderData.product_description);
+  let aux = "";
+  for (const product of orderData.products) {
+    aux += `<li>${product.quantity}x ${product.name}</li>`;
+  }
+  orderProducts.innerHTML = toTitleCase(aux);
 
   //   Código de orden
   orderCode.innerHTML = orderData.reference_code;
