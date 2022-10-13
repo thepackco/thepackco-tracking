@@ -46,7 +46,7 @@ function toTitleCase(str) {
 // Make the request to Central
 const getTrackingProgress = async (trackingNumber) => {
   const response = await fetch(
-    `http://127.0.0.1:8001/api/shops/order/${trackingNumber}/`
+    `https://central.thepackco.cl/api/shops/order/${trackingNumber}/`
   );
   return response.status === 200 ? await response.json() : null;
 };
