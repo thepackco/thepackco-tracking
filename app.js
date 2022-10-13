@@ -12,6 +12,7 @@ const deliver = document.querySelector("#deliver");
 const orderTime = document.querySelector("#order-time");
 const statusCondition = document.querySelector("#status-condition");
 const steps = document.querySelector("#progressbar");
+const shop = document.querySelector("#order-shop");
 
 const orderStatus = {
   created: "Orden recibida.<br>Paquete en preparación📦",
@@ -121,6 +122,8 @@ searchButton.addEventListener("click", async () => {
     aux += `<li>${product.quantity}x ${product.name}</li>`;
   }
   orderProducts.innerHTML = toTitleCase(aux);
+
+  shop.innerHTML = orderData.shop_name;
 
   //   Código de orden
   orderCode.innerHTML = orderData.reference_code;
