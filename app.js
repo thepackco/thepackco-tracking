@@ -85,7 +85,7 @@ searchButton.addEventListener("click", async () => {
     );
   }
   const orderData = await getTrackingProgress(trackingNumber);
-  if (!orderData) {
+  if (!Object.keys(orderData).length) {
     return Swal.fire(
       "El número de seguimiento no existe",
       "Por favor, ingrese un número de seguimiento válido",
