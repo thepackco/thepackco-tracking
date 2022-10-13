@@ -16,7 +16,7 @@ const steps = document.querySelector("#progressbar");
 const orderStatus = {
   created: "Orden recibida.<br>Paquete en preparación📦",
   received: "Paquete preparado.<br>Listo para ser despachado🚚",
-  processed: "Envío en progreso🚚.",
+  processed: "Envío en progreso🚚",
   delivered: "Envío entregado correctamente🎉",
   delegated: "Envío delegado a courier externo",
   deleted: "Paquete preparado.<br>Listo para ser despachado🚚",
@@ -54,7 +54,9 @@ const getTrackingProgress = async (trackingNumber) => {
 // When the search button is clicked, get the tracking number and make the request
 searchButton.addEventListener("click", async () => {
   const regex = /^[a-z0-9]+$/i;
-  steps.innerHTML = "";
+  // Clean variables
+
+  trackingProgress.classList.add("d-none");
 
   const trackingNumber = document
     .querySelector("#tracking-number")
