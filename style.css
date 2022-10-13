@@ -4,7 +4,7 @@ body {
     height: 100%;
     background-color: #ff7a00;
     background-repeat: no-repeat;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .text-primary {
@@ -124,6 +124,6 @@ body {
 
 @media screen and (max-width: 900px) {
     .icon-content {
-        width: 50%;
+        width: 25%;
     }
 }
