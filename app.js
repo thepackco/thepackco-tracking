@@ -116,7 +116,7 @@ searchButton.addEventListener("click", async () => {
       `;
 
   //   Productos
-  orderProducts.innerHTML = orderData.product_description;
+  orderProducts.innerHTML = toTitleCase(orderData.product_description);
 
   //   Código de orden
   orderCode.innerHTML = orderData.reference_code;
