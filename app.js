@@ -134,7 +134,7 @@ searchButton.addEventListener("click", async () => {
   //   Repartidor
   for (const evento of orderData.events) {
     if (evento.name === "tpc_registered") {
-      deliver.innerHTML = evento.additional_data.driver_name;
+      deliver.innerHTML = toTitleCase(evento.additional_data.driver_name);
     }
   }
 
