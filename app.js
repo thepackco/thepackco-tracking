@@ -59,7 +59,7 @@ searchButton.addEventListener("click", async () => {
   // Clean variables
 
   trackingProgress.classList.add("d-none");
-  statusCondition.innerHTML = "";
+  steps.innerHTML = "";
 
   const trackingNumber = document
     .querySelector("#tracking-number")
