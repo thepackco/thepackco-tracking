@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -26,7 +26,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title col-12 font-weight-bold pt-2">Consultar Seguimiento | ThePackCo</h3>
+                        <h3 class="card-title col-12 font-weight-bold pt-2 text-center">Consultar Seguimiento |
+                            ThePackCo</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -35,19 +36,17 @@
                                     placeholder="Ingresa tu número de seguimiento. Ej: TT3N37UVKQ" />
                                 <div id="search-button" class="input-group-append">
                                     <button class="btn btn-dark" type="button"><i
-                                            class="fa-solid fa-truck-ramp-box"></i> Realizar seguimiento</button>
+                                            class="fa-solid fa-truck-ramp-box"></i> Consultar</button>
                                 </div>
                                 <!-- Progress -->
                                 <div id="tracking-progress" class="container px-1 px-md-4 py-5 mx-auto d-none">
-                                    <h4 class="text-center">INFORMACIÓN GENERAL</h4>
+                                    <h3 class="text-center">
+                                        ORDEN
+                                        <span id="show-tracking-number" class="text-secondary font-weight-bold"></span>
+                                    </h3>
                                     <hr>
                                     <div class="row">
                                         <div class="col-8">
-                                            <h5>
-                                                ORDEN
-                                                <span id="show-tracking-number"
-                                                    class="text-secondary font-weight-bold"></span>
-                                            </h5>
                                             <p class="mb-0">
                                                 Cliente: <span class="font-weight-bold" id="customer-name"></span>
                                             </p>
@@ -95,7 +94,7 @@
                                         <!-- Add class 'active' to progress -->
                                         <br>
                                         <div class="text-center text-success">
-                                            <h3 id="status-condition">
+                                            <h3 id="status-condition" class="font-weight-bold">
                                             </h3>
                                         </div>
                                         <hr>
