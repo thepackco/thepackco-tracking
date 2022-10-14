@@ -10,7 +10,7 @@ const orderCode = document.querySelector("#order-code");
 const packages = document.querySelector("#packages");
 const deliver = document.querySelector("#deliver");
 const orderTime = document.querySelector("#order-time");
-const statusCondition = document.querySelector("#status-condition");
+let statusCondition = document.querySelector("#status-condition");
 const steps = document.querySelector("#progressbar");
 const shop = document.querySelector("#order-shop");
 
