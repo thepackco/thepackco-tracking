@@ -10,7 +10,7 @@ const orderCode = document.querySelector("#order-code");
 const packages = document.querySelector("#packages");
 const deliver = document.querySelector("#deliver");
 const orderTime = document.querySelector("#order-time");
-let statusCondition = document.querySelector("#status-condition");
+const statusCondition = document.querySelector("#status-condition");
 const steps = document.querySelector("#progressbar");
 const shop = document.querySelector("#order-shop");
 
@@ -59,7 +59,7 @@ searchButton.addEventListener("click", async () => {
   // Clean variables
 
   trackingProgress.classList.add("d-none");
-  statusCondition = "";
+  statusCondition.innerHTML = "";
 
   const trackingNumber = document
     .querySelector("#tracking-number")
