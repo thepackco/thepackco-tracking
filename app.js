@@ -79,7 +79,7 @@ searchButton.addEventListener("click", async () => {
     );
   } else if (!regex.test(trackingNumber)) {
     return Swal.fire(
-      "Еl número de seguimiento solo puede contener letras y números",
+      "Еl número de seguimiento solo puede contener alfanuméricos",
       "Por favor, ingrese un número de seguimiento válido",
       "warning"
     );
