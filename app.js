@@ -84,18 +84,6 @@ searchButton.addEventListener("click", async () => {
       "Por favor, ingrese un número de seguimiento válido",
       "warning"
     );
-  } else if (Number(trackingNumber)) {
-    return Swal.fire(
-      "El número de seguimiento no puede contener solo números",
-      "Por favor, ingrese un número de seguimiento válido",
-      "warning"
-    );
-  } else if (/^[a-zA-Z]+$/.test(trackingNumber)) {
-    return Swal.fire(
-      "El número de seguimiento no puede contener solo letras",
-      "Por favor, ingrese un número de seguimiento válido",
-      "warning"
-    );
   }
   const orderData = await getTrackingProgress(trackingNumber);
   if (!Object.keys(orderData).length) {
