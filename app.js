@@ -45,6 +45,21 @@ function toTitleCase(str) {
   });
 }
 
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
+const publicId = params.public_id;
+
+if (Boolean(publicId) && publicId.length == 10) {
+  document.querySelector("#tracking-number").value = publicId;
+  Swal.fire(
+    `Código de seguimiento: ${publicId}`,
+    "Al dar click en consultar, podrás ver el estatus",
+    "info"
+  );
+}
+
 // Make the request to Central
 const getTrackingProgress = async (trackingNumber) => {
   const response = await fetch(
