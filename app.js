@@ -137,6 +137,9 @@ searchButton.addEventListener("click", async () => {
   //   Productos
   let aux = "";
   for (const product of orderData.products) {
+    if (product.name === "DELIVERY") {
+      continue;
+    }
     aux += `<li>${product.quantity}x ${product.name}</li>`;
   }
   orderProducts.innerHTML = toTitleCase(aux);
