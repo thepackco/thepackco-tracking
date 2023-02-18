@@ -15,18 +15,18 @@ const steps = document.querySelector("#progressbar");
 const shop = document.querySelector("#order-shop");
 
 const orderStatus = {
-  created: "Orden recibida.<br>Paquete en preparación📦",
-  received: "Paquete preparado.<br>Listo para ser despachado🚚",
-  processed: "Envío en progreso🚚",
-  delivered: "Envío entregado correctamente🎉",
+  created: "Orden recibida.<br>Paquete en preparación 📦",
+  received: "Paquete preparado.<br>Listo para ser despachado 🚚",
+  processed: "Envío en progreso 🚚",
+  delivered: "Envío entregado correctamente 🎉",
   delegated: "Envío delegado a courier externo",
-  deleted: "Paquete preparado.<br>Listo para ser despachado🚚",
-  canceled: "Envío cancelado✖️",
-  archived: "Envío archivado📥",
+  deleted: "Paquete preparado.<br>Listo para ser despachado 🚚",
+  canceled: "Envío cancelado ❌",
+  archived: "Envío archivado 📥",
   tpc_registered: "Envío en preparación para despacho",
-  tpc_dispatched: "Envío en tránsito🚚",
-  tpc_delivered: "Envío entregado correctamente🎉",
-  tpc_canceled: "Envío no entregado por falla del receptor✖️",
+  tpc_dispatched: "Envío en tránsito 🚚",
+  tpc_delivered: "Envío entregado correctamente 🎉",
+  tpc_canceled: "Envío no entregado por falla del receptor ❌",
   tpc_postponed: "Envío pospuesto",
   ext_delegated: "Envío delegado a courier externo",
 };
