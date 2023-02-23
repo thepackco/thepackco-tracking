@@ -13,6 +13,7 @@ const orderTime = document.querySelector("#order-time");
 const statusCondition = document.querySelector("#status-condition");
 const steps = document.querySelector("#progressbar");
 const shop = document.querySelector("#order-shop");
+const eventDescription = document.querySelector("#event-description");
 
 const orderStatus = {
   created: "Orden recibida.<br>Paquete en preparación 📦",
@@ -175,4 +176,14 @@ searchButton.addEventListener("click", async () => {
     steps.innerHTML = condition;
   }
   statusCondition.innerHTML = orderStatus[orderData.status];
+
+  // Evento del envío
+
+  const todayDate = new Date();
+
+  eventDescription.innerHTML = `${todayDate.getDate()}/${
+    todayDate.getMonth() + 1
+  }/${todayDate.getFullYear()} - ${
+    orderData.events[orderData.events.length - 1].description
+  }`;
 });
