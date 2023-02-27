@@ -1,4 +1,5 @@
 const trackingProgress = document.querySelector("#tracking-progress");
+const input = document.querySelector("#tracking-number");
 const searchButton = document.querySelector("#search-button");
 const showTrackingNumber = document.querySelector("#show-tracking-number");
 const customerName = document.querySelector("#customer-name");
@@ -186,4 +187,11 @@ searchButton.addEventListener("click", async () => {
   }/${todayDate.getFullYear()} - ${
     orderData.events[orderData.events.length - 1].description
   }`;
+});
+
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    searchButton.click();
+  }
 });
