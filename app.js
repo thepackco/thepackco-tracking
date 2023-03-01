@@ -180,11 +180,7 @@ searchButton.addEventListener("click", async () => {
 
   // Evento del envío
 
-  const todayDate = new Date();
-
-  eventDescription.innerHTML = `${todayDate.getDate()}/${
-    todayDate.getMonth() + 1
-  }/${todayDate.getFullYear()} - ${
+  eventDescription.innerHTML = `${
     orderData.events[orderData.events.length - 1].description
   }`;
 });
