@@ -111,14 +111,6 @@ searchButton.addEventListener("click", async () => {
     );
   }
 
-  Swal.fire({
-    position: "center",
-    icon: "info",
-    title: "Buscando pedido",
-    showConfirmButton: false,
-    timer: 1000,
-  });
-
   trackingProgress.classList.remove("d-none");
 
   showTrackingNumber.innerHTML = `#${trackingNumber}`;
@@ -198,4 +190,12 @@ input.addEventListener("keypress", function (e) {
     e.preventDefault();
     searchButton.click();
   }
+
+  Swal.fire({
+    position: "center",
+    icon: "info",
+    title: "Buscando pedido",
+    showConfirmButton: false,
+    timer: 1000,
+  });
 });
