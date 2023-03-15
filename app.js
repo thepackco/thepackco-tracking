@@ -188,14 +188,13 @@ searchButton.addEventListener("click", async () => {
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "Buscando pedido",
+      showConfirmButton: false,
+      timer: 1000,
+    });
     searchButton.click();
   }
-
-  Swal.fire({
-    position: "center",
-    icon: "info",
-    title: "Buscando pedido",
-    showConfirmButton: false,
-    timer: 1000,
-  });
 });
