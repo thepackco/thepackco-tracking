@@ -53,7 +53,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 const publicId = params.public_id;
 
-if (Boolean(publicId) && publicId.length == 10) {
+if (Boolean(publicId) && publicId.length === 10) {
   document.querySelector("#tracking-number").value = publicId;
   Swal.fire(
     `Código de seguimiento: ${publicId}`,
