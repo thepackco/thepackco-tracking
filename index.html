@@ -1,167 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Seguimiento | Omnitech</title>
+
 
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
     />
-    <title>Seguimiento | Omnitech</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
         <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title col-12 font-weight-bold pt-2 text-center">
-                Consultar Seguimiento | Omnitech
-              </h3>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="input-group">
-                  <input
-                    id="tracking-number"
-                    type="text"
-                    class="form-control"
-                    placeholder="Ingresa tu número de seguimiento. Ej: TT3N37UVKQ"
-                  />
-                  <div id="search-button" class="input-group-append">
-                    <button class="btn btn-dark" type="button">
-                      <i class="fa-solid fa-truck-ramp-box"></i> Consultar
-                    </button>
-                  </div>
-                  <!-- Progress -->
-                  <div
-                    id="tracking-progress"
-                    class="container px-1 px-md-4 py-5 mx-auto d-none"
-                  >
-                    <h3 class="text-center">
-                      <strong>ORDEN</strong>
-                      <b id="show-tracking-number" class="text-secondary"></b>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title col-12 font-weight-bold pt-2 text-center">
+                        Consultar Seguimiento | Omnitech
                     </h3>
-                    <hr />
-                    <div class="row">
-                      <div class="col-8">
-                        <p class="mb-0">Cliente: <b id="customer-name"></b></p>
-                        <p class="mb-0">Región: <b id="region"></b></p>
-                        <p class="mb-0">Comuna: <b id="city"></b></p>
-                        <p>
-                          Dirección:
-                          <b id="customer-direction"></b>
-                        </p>
-                        <p class="mb-0">
-                          Productos: <br />
-                          <b id="order-products"> </b>
-                        </p>
-                      </div>
-                      <div class="col-4 text-sm-right">
-                        <p>
-                          Tienda:
-                          <b id="order-shop"></b>
-                        </p>
-                        <p class="mb-0">
-                          Código:
-                          <b id="order-code"></b>
-                        </p>
-                        <p class="mb-0">
-                          Unidades:
-                          <b id="packages"></b>
-                        </p>
-                        <p class="mb-0">Repartidor: <b id="deliver"></b></p>
-                        <p class="mb-0">
-                          Hora entrega est.: <b id="order-time"></b>
-                        </p>
-                      </div>
-                    </div>
-                    <hr />
-                    <div class="card">
-                      <!-- Add class 'active' to progress -->
-                      <br />
-                      <div class="text-center text-success">
-                        <h3 id="status-condition" class="font-weight-bold"></h3>
-                      </div>
-                      <hr />
-                      <div class="text-center text-primary">
-                        <h6
-                          id="event-description"
-                          class="font-weight-bold"
-                        ></h6>
-                      </div>
-                      <hr />
-                      <div class="row d-flex justify-content-center">
-                        <div class="col-12">
-                          <ul id="progressbar" class="text-center"></ul>
-                        </div>
-                      </div>
-                      <div class="row justify-content-between top">
-                        <div class="row d-flex icon-content">
-                          <img class="icon" src="img/step1.png" />
-                          <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Orden<br />Preparada</p>
-                          </div>
-                        </div>
-                        <div class="row d-flex icon-content">
-                          <img class="icon" src="img/step2.png" />
-                          <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Orden<br />Progreso</p>
-                          </div>
-                        </div>
-                        <div class="row d-flex icon-content">
-                          <img class="icon text-danger" src="img/step3.png" />
-                          <div class="d-flex flex-column">
-                            <p class="font-weight-bold">
-                              Orden<br />En Tránsito
-                            </p>
-                          </div>
-                        </div>
-                        <div class="row d-flex icon-content">
-                          <img class="icon" src="img/step4.png" />
-                          <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Orden<br />Entregada</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text-center">
-                      <p>
-                        © Copyright
-                        <script>
-                          document.write(new Date().getFullYear());
-                        </script>
-                        Omnitech. All Rights Reserved.
-                      </p>
-                    </div>
-                  </div>
                 </div>
-              </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="input-group">
+                            <input
+                                    id="tracking-number"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Ingresa tu número de seguimiento. Ej: TT3N37UVKQ"
+                            />
+                            <div id="search-button" class="input-group-append">
+                                <button class="btn btn-dark" type="button">
+                                    <i class="fa-solid fa-truck-ramp-box"></i> Consultar
+                                </button>
+                            </div>
+                            <!-- Progress -->
+                            <div
+                                    id="tracking-progress"
+                                    class="container px-1 px-md-4 py-5 mx-auto d-none"
+                            >
+                                <h3 class="text-center">
+                                    <strong>ORDEN</strong>
+                                    <b id="show-tracking-number" class="text-secondary"></b>
+                                </h3>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p class="mb-0">Cliente: <b id="customer-name"></b></p>
+                                        <p class="mb-0">Región: <b id="region"></b></p>
+                                        <p class="mb-0">Comuna: <b id="city"></b></p>
+                                        <p>
+                                            Dirección:
+                                            <b id="customer-direction"></b>
+                                        </p>
+                                        <p class="mb-0">
+                                            Productos: <br/>
+                                            <b id="order-products"> </b>
+                                        </p>
+                                    </div>
+                                    <div class="col-4 text-sm-right">
+                                        <p>
+                                            Tienda:
+                                            <b id="order-shop"></b>
+                                        </p>
+                                        <p class="mb-0">
+                                            Código:
+                                            <b id="order-code"></b>
+                                        </p>
+                                        <p class="mb-0">
+                                            Unidades:
+                                            <b id="packages"></b>
+                                        </p>
+                                        <p class="mb-0">Repartidor: <b id="deliver"></b></p>
+                                        <p class="mb-0">
+                                            Hora entrega est.: <b id="order-time"></b>
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="card">
+                                    <!-- Add class 'active' to progress -->
+                                    <br/>
+                                    <div class="text-center text-success">
+                                        <h3 id="status-condition" class="font-weight-bold"></h3>
+                                    </div>
+                                    <hr/>
+                                    <div class="text-center text-primary">
+                                        <h6
+                                                id="event-description"
+                                                class="font-weight-bold"
+                                        ></h6>
+                                    </div>
+                                    <hr/>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-12">
+                                            <ul id="progressbar" class="text-center"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-between top">
+                                        <div class="row d-flex icon-content">
+                                            <img class="icon" src="img/step1.png"/>
+                                            <div class="d-flex flex-column">
+                                                <p class="font-weight-bold">Orden<br/>Preparada</p>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex icon-content">
+                                            <img class="icon" src="img/step2.png"/>
+                                            <div class="d-flex flex-column">
+                                                <p class="font-weight-bold">Orden<br/>Progreso</p>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex icon-content">
+                                            <img class="icon text-danger" src="img/step3.png"/>
+                                            <div class="d-flex flex-column">
+                                                <p class="font-weight-bold">
+                                                    Orden<br/>En Tránsito
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex icon-content">
+                                            <img class="icon" src="img/step4.png"/>
+                                            <div class="d-flex flex-column">
+                                                <p class="font-weight-bold">Orden<br/>Entregada</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <p>
+                                        © Copyright
+                                        <script>
+                                            document.write(new Date().getFullYear());
+                                        </script>
+                                        Omnitech. All Rights Reserved.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="app.js"></script>
-  </body>
+</div>
+</body>
 </html>
