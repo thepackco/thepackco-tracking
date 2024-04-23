@@ -55,18 +55,12 @@ const publicId = params.public_id;
 
 if (Boolean(publicId) && publicId.length === 10) {
   document.querySelector("#tracking-number").value = publicId;
-  Swal.fire(
-    `Código de seguimiento: ${publicId}`,
-    "Al dar click en consultar, podrás ver el estatus",
-    "info"
-  );
+  Swal.fire(`Código de seguimiento: ${publicId}`, "Al dar click en consultar, podrás ver el estatus", "info");
 }
 
 // Make the request to Central
 const getTrackingProgress = async (trackingNumber) => {
-  const response = await fetch(
-    `https://central.thepackco.cl/api/shops/order/${trackingNumber}/`
-  );
+  const response = await fetch(`https://central.thepackco.cl/api/shops/order/${trackingNumber}/`);
   return response.status === 200 ? await response.json() : null;
 };
 
@@ -78,10 +72,7 @@ searchButton.addEventListener("click", async () => {
   trackingProgress.classList.add("d-none");
   steps.innerHTML = "";
 
-  const trackingNumber = document
-    .querySelector("#tracking-number")
-    .value.trim()
-    .toUpperCase();
+  const trackingNumber = document.querySelector("#tracking-number").value.trim().toUpperCase();
 
   if (!trackingNumber) {
     return Swal.fire(
@@ -116,22 +107,16 @@ searchButton.addEventListener("click", async () => {
   showTrackingNumber.innerHTML = `#${trackingNumber}`;
 
   // Nombre del cliente
-  customerName.innerHTML = `<strong>${toTitleCase(
-    orderData.customer_name
-  )}</strong>`;
+  customerName.innerHTML = `<strong>${toTitleCase(orderData.customer_name)}</strong>`;
 
-  //   Region
+  // Region
   region.innerHTML = orderData.address_region_name;
 
   // Comuna
   city.innerHTML = orderData.address_city_name;
 
   //   Dirección del cliente
-  const totalDirection = [
-    orderData.address_street,
-    orderData.address_flat,
-    orderData.address_additional,
-  ].join(" ");
+  const totalDirection = [orderData.address_street, orderData.address_flat, orderData.address_additional].join(" ");
   customerDirection.innerHTML = `
       <strong>${toTitleCase(totalDirection)}</strong>
       `;
@@ -156,14 +141,14 @@ searchButton.addEventListener("click", async () => {
 
   //   Repartidor
   for (const evento of orderData.events) {
-    if (evento.name === "tpc_registered") {
+    if (evento.name === "tpc_registered" && evento.additional_data.driver_name) {
       deliver.innerHTML = toTitleCase(evento.additional_data.driver_name);
     }
   }
 
   //   Tiempo estimado de entrega
   for (const evento of orderData.events) {
-    if (evento.name === "tpc_dispatched") {
+    if (evento.name === "tpc_dispatched" && evento.additional_data.eta) {
       orderTime.innerHTML = evento.additional_data.eta;
     }
   }
@@ -180,9 +165,7 @@ searchButton.addEventListener("click", async () => {
 
   // Evento del envío
 
-  eventDescription.innerHTML = `${
-    orderData.events[orderData.events.length - 1].description
-  }`;
+  eventDescription.innerHTML = `${orderData.events[orderData.events.length - 1].description}`;
 });
 
 input.addEventListener("keypress", function (e) {
