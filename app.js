@@ -15,6 +15,24 @@ const statusCondition = document.querySelector("#status-condition");
 const steps = document.querySelector("#progressbar");
 const shop = document.querySelector("#order-shop");
 const eventDescription = document.querySelector("#event-description");
+const imgCreated = document.querySelector("#img-created");
+const imgReceived = document.querySelector("#img-received");
+const imgProcessed = document.querySelector("#img-processed");
+const imgDelivered = document.querySelector("#img-delivered");
+
+const defaultImages = {
+  created: "img/step1.png",
+  received: "img/step2.png",
+  processed: "img/step3.png",
+  delivered: "img/step4.png",
+};
+
+const newImages = {
+  created: "img/step-new1.png",
+  received: "img/step-new2.png",
+  processed: "img/step-new3.png",
+  delivered: "img/step-new4.png",
+};
 
 const orderStatus = {
   created: "Orden recibida.<br>Paquete en preparación 📦",
@@ -34,10 +52,9 @@ const orderStatus = {
 };
 
 const statusOnFront = {
-  received: 1,
-  processed: 2,
-  tpc_dispatched: 3,
-  tpc_delivered: 4,
+  created: 1,
+  received: 2,
+  processed: 3,
   delivered: 4,
 };
 
@@ -63,6 +80,21 @@ const getTrackingProgress = async (trackingNumber) => {
   const response = await fetch(`https://central.thepackco.cl/api/shops/order/${trackingNumber}/`);
   return response.status === 200 ? await response.json() : null;
 };
+
+// Function to update step images
+function updateStepImages(currentStep) {
+  const imageMap = {
+    1: newImages.created,
+    2: newImages.received,
+    3: newImages.processed,
+    4: newImages.delivered,
+  };
+
+  imgCreated.innerHTML = `<img class="icon" src="${currentStep >= 1 ? imageMap[1] : defaultImages.created}" />`;
+  imgReceived.innerHTML = `<img class="icon" src="${currentStep >= 2 ? imageMap[2] : defaultImages.received}" />`;
+  imgProcessed.innerHTML = `<img class="icon" src="${currentStep >= 3 ? imageMap[3] : defaultImages.processed}" />`;
+  imgDelivered.innerHTML = `<img class="icon" src="${currentStep >= 4 ? imageMap[4] : defaultImages.delivered}" />`;
+}
 
 // When the search button is clicked, get the tracking number and make the request
 searchButton.addEventListener("click", async () => {
@@ -117,9 +149,7 @@ searchButton.addEventListener("click", async () => {
 
   //   Dirección del cliente
   const totalDirection = [orderData.address_street, orderData.address_flat, orderData.address_additional].join(" ");
-  customerDirection.innerHTML = `
-      <strong>${toTitleCase(totalDirection)}</strong>
-      `;
+  customerDirection.innerHTML = `<strong>${toTitleCase(totalDirection)}</strong>`;
 
   //   Productos
   let aux = "";
@@ -160,11 +190,12 @@ searchButton.addEventListener("click", async () => {
       condition += '<li class="active step0"></li>';
     }
     steps.innerHTML = condition;
+    // Update step images
+    updateStepImages(statusOnFront[orderData.status]);
   }
   statusCondition.innerHTML = orderStatus[orderData.status];
 
   // Evento del envío
-
   eventDescription.innerHTML = `${orderData.events[orderData.events.length - 1].description}`;
 });
 
