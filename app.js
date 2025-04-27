@@ -77,7 +77,7 @@ if (Boolean(publicId) && publicId.length === 10) {
 
 // Make the request to Central
 const getTrackingProgress = async (trackingNumber) => {
-  const response = await fetch(`https://central.thepackco.cl/api/shops/order/${trackingNumber}/`);
+  const response = await fetch(`https://central.omnitech.cl/api/shops/order/${trackingNumber}/`);
   return response.status === 200 ? await response.json() : null;
 };
 
