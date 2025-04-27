@@ -75,7 +75,7 @@ if (Boolean(publicId) && publicId.length === 10) {
   Swal.fire(`Código de seguimiento: ${publicId}`, "Al dar click en consultar, podrás ver el estatus", "info");
 }
 
-// Make the request to Central
+// Make the request to Central Omnitech
 const getTrackingProgress = async (trackingNumber) => {
   const response = await fetch(`https://central.omnitech.cl/api/shops/order/${trackingNumber}/`);
   return response.status === 200 ? await response.json() : null;
