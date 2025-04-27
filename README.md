@@ -1,6 +1,6 @@
-# 📦 ThePackCo Tracking
+# 📦 Omnitech Tracking
 
-Bienvenido a **ThePackCo Tracking**, un sistema diseñado para gestionar y hacer seguimiento eficiente de pedidos y entregas. Este proyecto busca optimizar la visibilidad en la cadena logística, garantizando una experiencia de usuario moderna y confiable.
+Bienvenido a **Omnitech Tracking**, un sistema diseñado para gestionar y hacer seguimiento eficiente de pedidos y entregas. Este proyecto busca optimizar la visibilidad en la cadena logística, garantizando una experiencia de usuario moderna y confiable.
 
 ## 🚀 Características principales
 
